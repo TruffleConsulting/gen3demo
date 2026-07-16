@@ -49,7 +49,7 @@
     cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:8px;transition:.15s transform,.15s box-shadow,.15s background;
   }
   .btn:active{transform:translateY(1px);}
-  .btn-primary{background:var(--blue);color:#fff;}
+  .btn-primary{background:var(--blue);color:#fff;max-width:200px;}
   .btn-primary:hover{background:var(--blue-dark);}
   .btn-grad{background:var(--grad);color:#fff;}
   .btn-grad:hover{box-shadow:0 6px 18px rgba(122,91,247,.35);}
@@ -404,6 +404,12 @@
   .msg-card:hover{background:#eef1f6;}
 
   .addon-row{display:flex;align-items:center;gap:16px;flex-wrap:wrap;padding:18px 20px;}
+  .trust-row{display:flex;gap:22px;flex-wrap:wrap;justify-content:center;margin-top:24px;padding-top:18px;border-top:1px solid var(--border);}
+  .payment-trust-row{display:flex;gap:16px;flex-wrap:wrap;justify-content:center;margin-top:14px;}
+  .payment-trust-row div{display:flex;align-items:center;gap:6px;font-size:11.5px;font-weight:600;color:var(--muted);}
+  .payment-trust-row span{font-size:13px;}
+  .trust-row div{display:flex;align-items:center;gap:6px;font-size:12px;font-weight:600;color:var(--muted);}
+  .trust-row span{font-size:14px;}
   .switch2{display:flex;align-items:center;gap:10px;cursor:pointer;font-weight:700;font-size:14px;color:var(--navy);}
   .tk2{position:relative;width:40px;height:22px;border-radius:12px;background:var(--good);flex-shrink:0;transition:.15s;}
   .tk2:before{content:"";position:absolute;top:2px;left:20px;width:18px;height:18px;border-radius:50%;background:#fff;transition:.15s;}
@@ -449,11 +455,22 @@
   @media(max-width:800px){.pub-tab-card.active{grid-template-columns:1fr;}}
   .pub-tab-card h3{font-size:23px;margin:4px 0 10px;}
   .pub-tab-card ul{list-style:none;padding:0;margin:14px 0 18px;}
-  .pub-tab-card li{display:flex;gap:9px;padding:6px 0;font-size:13.5px;color:var(--navy-soft);}
+  .pub-tab-card li{display:flex;gap:9px;padding:6px 0;font-size:13.5px;color:var(--navy-soft);align-items:flex-start;}
+  .pub-tab-card li .ic{flex-shrink:0;}
+  .pub-tab-card li .tx{flex:1;}
   .pub-tab-visual{
     background:linear-gradient(135deg, rgba(83,131,254,.10), rgba(122,91,247,.10));
-    border-radius:16px;min-height:200px;display:flex;align-items:center;justify-content:center;font-size:56px;
+    border-radius:16px;min-height:200px;display:flex;align-items:center;justify-content:center;padding:22px;
   }
+  .mockup-frame{background:#fff;border-radius:14px;box-shadow:0 12px 32px rgba(31,41,51,.14);padding:18px 20px;width:100%;max-width:300px;}
+  .mockup-frame .mf-head{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:10px;}
+  .mockup-frame .mf-title{font-weight:800;font-size:13px;color:var(--navy);}
+  .mockup-frame .mf-sub{font-size:11px;color:var(--muted);margin-top:2px;}
+  .mockup-frame .mf-row{display:flex;justify-content:space-between;gap:10px;font-size:12px;color:var(--navy-soft);padding:5px 0;border-bottom:1px dashed var(--border);}
+  .mockup-frame .mf-total{font-weight:800;font-size:13px;color:var(--navy);}
+  .mf-chat-bubble{border-radius:10px;padding:8px 10px;font-size:11px;margin-bottom:6px;max-width:88%;line-height:1.4;}
+  .mf-chat-bubble.bot{background:var(--bg);color:var(--navy-soft);}
+  .mf-chat-bubble.user{background:var(--blue);color:#fff;margin-left:auto;}
 
   /* testimonial carousel */
   .pub-quotes{background:#fbfcfe;border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:56px 6%;text-align:center;}
@@ -570,7 +587,7 @@
           <div class="ic">⚠️</div>
           <div><div class="t">Known issue: eligibility exports</div><div class="d">Denver Clinic exports may show yesterday's data while we resolve a sync delay.</div></div>
         </div>
-        <div class="notif-footer" onclick="closeAllOverlays();activateNav('cases-list');">View all cases →</div>
+        <div class="notif-footer" onclick="closeAllOverlays();activateNav('cases-list');">View all cases</div>
       </div>
     </div>
     <div class="gh-name"><b>Jordan Reyes</b>Sunrise Rehab Partners</div>
@@ -619,7 +636,7 @@
     <h1>Sign in to Support Hub</h1>
     <p class="sub">Authenticate with your WebPT organization identity.</p>
     <button class="btn btn-primary btn-block" style="margin-bottom:10px;" onclick="goToIdp()">Sign in with WebPT SSO</button>
-    <button class="btn btn-ghost btn-block" onclick="goPublic()">Not a member yet? Explore buying Gen 3 →</button>
+    <button class="btn btn-ghost btn-block" onclick="goPublic()">Not a member yet? Explore buying Gen 3</button>
     <div class="sso-note">Simulates SAML JIT provisioning (P1‑1 / R11): first successful SSO login provisions Experience Cloud access automatically. WebPT owns the IdP - Truffle configures EC as the service provider only.</div>
   </div>
 </div>
@@ -685,7 +702,7 @@
             <div class="kv"><div class="k">Providers licensed</div><div class="v">7 / 10</div></div>
             <div class="kv"><div class="k">RCM add-on</div><div class="v">Active</div></div>
             <div class="kv"><div class="k">Renewal</div><div class="v">Mar 1, 2027</div></div>
-            <button class="btn btn-ghost btn-block" style="margin-top:14px;" onclick="activateNav('upgrade')">Explore add-ons →</button>
+            <button class="btn btn-ghost btn-block" style="margin-top:14px;" onclick="activateNav('upgrade')">Explore add-ons</button>
           </div>
         </div>
       </div>
@@ -768,8 +785,10 @@
               <div class="kv"><div class="k">Origin</div><div class="v">Gen 3 EMR handoff</div></div>
               <div class="kv"><div class="k">Owner</div><div class="v">Tier‑2 Support</div></div>
               <div class="kv"><div class="k">Account</div><div class="v" id="cd-account">Sunrise Rehab Partners</div></div>
-              <button class="btn btn-ghost btn-block" id="cd-escalate-btn" style="margin-top:12px;" onclick="escalateToHighPriority()">Escalate to High Priority</button>
-              <button class="btn btn-ghost btn-block" id="cd-close-btn" style="margin-top:8px;" onclick="closeCase()">Close case</button>
+              <div style="display:flex;gap:8px;margin-top:12px;flex-wrap:wrap;">
+                <button class="btn btn-ghost" id="cd-escalate-btn" onclick="escalateToHighPriority()">Escalate to High Priority</button>
+                <button class="btn btn-ghost" id="cd-close-btn" onclick="closeCase()">Close case</button>
+              </div>
             </div>
             <div class="card pad">
               <h3 style="margin-top:0;font-size:15px;">Need this faster?</h3>
@@ -824,21 +843,7 @@
         <div id="billing-subnav-methods"></div>
         <div class="two-col">
           <div class="card pad">
-            <div class="method-card">
-              <div class="icon">VISA</div>
-              <div class="info"><div class="num">···· ···· ···· 6620</div><div class="exp">Expires 03/28 · Default</div></div>
-              <span class="chip chip-good">Default</span>
-            </div>
-            <div class="method-card">
-              <div class="icon ach">ACH</div>
-              <div class="info"><div class="num">Business checking ···· 9021</div><div class="exp">Assigned to: RCM add-on orders</div></div>
-              <button class="btn btn-ghost btn-sm" onclick="showToast('Set as default')">Set default</button>
-            </div>
-            <div class="method-card" style="border-color:var(--bad);background:var(--bad-bg);">
-              <div class="icon" style="background:var(--bad);">MC</div>
-              <div class="info"><div class="num">···· ···· ···· 7710</div><div class="exp" style="color:var(--bad);">Expired 05/26 - update to avoid disruption</div></div>
-              <button class="btn btn-coral btn-sm" onclick="showToast('Card removed')">Remove</button>
-            </div>
+            <div id="payment-methods-list"></div>
           </div>
           <div class="card pad">
             <h3 style="margin-top:0;font-size:15px;">Add a payment method</h3>
@@ -860,7 +865,7 @@
               <div class="field"><label>CVC</label><input type="text" placeholder="123"></div>
             </div>
             <div class="field hidden" id="pm-routing-row"><label>Routing number</label><input type="text" placeholder="021000021"></div>
-            <button class="btn btn-primary btn-block" onclick="showToast('Payment method added')">Save method</button>
+            <button class="btn btn-primary btn-block" onclick="saveNewMethod()">Save method</button>
           </div>
         </div>
       </div>
@@ -883,7 +888,7 @@
             </div>
           </div>
           <div class="banner banner-warn" style="margin:14px 0;"><div>⚠️</div><div>Your Mastercard ····7710 on file expired 05/26. If this was your autopay method, update it to prevent a missed payment.</div></div>
-          <button class="btn btn-primary" onclick="showToast('Autopay settings saved')">Save changes</button>
+          <div style="text-align:right;"><button class="btn btn-primary" onclick="showToast('Autopay settings saved')">Save changes</button></div>
         </div>
       </div>
 
@@ -938,7 +943,7 @@
         <div id="product-subnav-upgrade"></div>
         <div class="card pad" style="text-align:center;padding:40px;">
           <p class="muted">As an existing customer, adding seats or products routes you into the same self‑serve buy flow used by new customers (P2‑8–P2‑14), pre-filled with your account context.</p>
-          <button class="btn btn-primary" onclick="buyMoreFromAccount()">Continue to plan selection →</button>
+          <button class="btn btn-primary" onclick="buyMoreFromAccount()">Continue to plan selection</button>
         </div>
       </div>
 
@@ -1010,7 +1015,7 @@
           <div class="card pad">
             <h3 style="margin-top:0;font-size:15px;">Open the Help Center</h3>
             <p class="muted" style="font-size:12.5px;">Full documentation, release notes, and the searchable knowledge base are inside your Gen 3 EMR.</p>
-            <button class="btn btn-primary btn-block" style="margin-bottom:8px;" onclick="showToast('Opening Gen 3 EMR Help Center in a new tab')">Open Gen 3 EMR Help Center →</button>
+            <button class="btn btn-primary btn-block" style="margin-bottom:8px;max-width:none;" onclick="showToast('Opening Gen 3 EMR Help Center in a new tab')">Open Gen 3 EMR Help Center</button>
             <button class="btn btn-ai btn-block" onclick="openAF('Hi! I can answer quick questions here, or point you to the right EMR help article - what do you need?')">✨ Ask AI instead</button>
           </div>
         </div>
@@ -1055,7 +1060,7 @@
             <p class="muted" style="font-size:12.5px;">Authentication is handled entirely by WebPT's identity provider (SSO). There's no separate Support Hub password to manage (R11).</p>
             <div class="kv"><div class="k">Last sign-in</div><div class="v">Today, 8:41 AM</div></div>
             <div class="kv"><div class="k">Auth method</div><div class="v">SAML SSO (JIT)</div></div>
-            <button class="btn btn-ghost btn-block" style="margin-top:14px;" onclick="showToast('Redirecting to your identity provider')">Manage sign-in at WebPT IdP →</button>
+            <button class="btn btn-ghost btn-block" style="margin-top:14px;" onclick="showToast('Redirecting to your identity provider')">Manage sign-in at WebPT IdP</button>
           </div>
         </div>
       </div>
@@ -1075,15 +1080,33 @@
       <p>Buy Gen 3 online, or explore a free sandbox with sample data first - no commitment required.</p>
 
       <div class="pub-cta-row">
-        <button class="btn btn-primary" onclick="startBuy('new')">Get Started →</button>
-        <button class="btn btn-ghost" onclick="startSandbox()">Explore the sandbox</button>
+        <button class="btn btn-primary" onclick="startBuy('new')">Get your Gen 3</button>
+        <button class="btn btn-ghost" onclick="startSandbox()">Start Free Trial</button>
       </div>
+      <p class="muted" style="font-size:12px;margin-top:10px;">No credit card required for the free trial.</p>
     </div>
     <div class="pub-stats">
       <div class="pub-stats-inner">
         <div><div class="n">50%</div><div class="l">More patients attracted</div></div>
         <div><div class="n">3x</div><div class="l">Faster documentation</div></div>
         <div><div class="n">20%</div><div class="l">Revenue growth</div></div>
+      </div>
+    </div>
+
+    <div class="pub-body" style="padding-top:36px;padding-bottom:10px;">
+      <div class="stat-row">
+        <div class="card stat-card"><div class="num">&lt;5</div><div class="lbl">Providers? Self-serve in minutes</div></div>
+        <div class="card stat-card"><div class="num">5+</div><div class="lbl">Providers or multi-location? Guided specialist onboarding</div></div>
+        <div class="card stat-card"><div class="num">30 sec</div><div class="lbl">Quick qualifying questions</div></div>
+        <div class="card stat-card"><div class="num">Instant</div><div class="lbl">Provisioning on payment</div></div>
+      </div>
+      <div class="trust-row" style="border-top:none;margin-top:20px;padding-top:0;">
+        <div><span>✔</span> Trusted by thousands of rehab clinics</div>
+        <div><span>✔</span> HIPAA-ready</div>
+        <div><span>✔</span> Secure online purchase</div>
+        <div><span>✔</span> Guided implementation</div>
+        <div><span>✔</span> Cancel anytime</div>
+        <div><span>✔</span> No sales call required</div>
       </div>
     </div>
 
@@ -1103,12 +1126,24 @@
           <h3>See every case, the moment it moves</h3>
           <p class="muted">Your embedded EMR assistant handles first-line questions and creates a case only when a human needs to step in - so what you see here is always current.</p>
           <ul>
-            <li>✅ Plain-language status: Received → In Review → In Progress → Resolved</li>
-            <li>✅ Organization-wide visibility across your Gen 3 account hierarchy</li>
-            <li>✅ Comment directly on a case without leaving the portal</li>
+            <li><span class="ic">✅</span><span class="tx">Plain-language status: Received → In Review → In Progress → Resolved</span></li>
+            <li><span class="ic">✅</span><span class="tx">Organization-wide visibility across your Gen 3 account hierarchy</span></li>
+            <li><span class="ic">✅</span><span class="tx">Comment directly on a case without leaving the portal</span></li>
           </ul>
         </div>
-        <div class="pub-tab-visual">🎫</div>
+        <div class="pub-tab-visual">
+          <div class="mockup-frame">
+            <div class="mf-head">
+              <div><div class="mf-title">Case #00234</div><div class="mf-sub">Sunrise Rehab Partners · Denver</div></div>
+              <span class="chip chip-warn">In Progress</span>
+            </div>
+            <div style="font-size:12.5px;color:var(--navy-soft);margin-bottom:12px;">Eligibility check failing for new payer</div>
+            <div class="status-bar" style="margin-bottom:6px;">
+              <div class="seg done"></div><div class="seg done"></div><div class="seg current"></div><div class="seg"></div><div class="seg"></div>
+            </div>
+            <div class="mf-sub" style="text-align:right;">Updated 2h ago</div>
+          </div>
+        </div>
       </div>
 
       <div class="pub-tab-card" id="ft-billing">
@@ -1117,12 +1152,23 @@
           <h3>Pay your way, always in view</h3>
           <p class="muted">Invoices, autopay, and payment plans in one logged-in view - backed by the same gateway and billing platform your finance team already trusts.</p>
           <ul>
-            <li>✅ One-time payments and stored payment methods (card or ACH)</li>
-            <li>✅ Autopay with expiring-card alerts before they become a problem</li>
-            <li>✅ 12-month forecast of upcoming invoices</li>
+            <li><span class="ic">✅</span><span class="tx">One-time payments and stored payment methods (card or ACH)</span></li>
+            <li><span class="ic">✅</span><span class="tx">Autopay with expiring-card alerts before they become a problem</span></li>
+            <li><span class="ic">✅</span><span class="tx">12-month forecast of upcoming invoices</span></li>
           </ul>
         </div>
-        <div class="pub-tab-visual">💳</div>
+        <div class="pub-tab-visual">
+          <div class="mockup-frame">
+            <div class="mf-head">
+              <div><div class="mf-title">Invoice INV-10456</div><div class="mf-sub">Jul 1, 2026</div></div>
+              <span class="chip chip-bad">Due Jul 15</span>
+            </div>
+            <div class="mf-row"><span>Gen 3 Enhanced - monthly</span><span>$1,190.00</span></div>
+            <div class="mf-row"><span>RCM add-on</span><span>$230.00</span></div>
+            <div class="mf-row" style="border-bottom:none;"><span class="mf-total">Total</span><span class="mf-total">$1,420.00</span></div>
+            <div class="mf-sub" style="margin-top:8px;">Autopay active · Visa ····6620</div>
+          </div>
+        </div>
       </div>
 
       <div class="pub-tab-card" id="ft-buy">
@@ -1131,12 +1177,22 @@
           <h3>From click to provisioned, in minutes</h3>
           <p class="muted">Small practices buy instantly online; anything more complex is routed to a specialist with your context intact - no starting over.</p>
           <ul>
-            <li>✅ TIN and email verified in under 2 minutes</li>
-            <li>✅ Live pricing pulled straight from Revenue Cloud</li>
-            <li>✅ Try a sandbox first, convert to a real account anytime</li>
+            <li><span class="ic">✅</span><span class="tx">Two quick questions - no TIN or paperwork upfront</span></li>
+            <li><span class="ic">✅</span><span class="tx">Live pricing pulled straight from Revenue Cloud</span></li>
+            <li><span class="ic">✅</span><span class="tx">Try a sandbox first, or buy directly online</span></li>
           </ul>
         </div>
-        <div class="pub-tab-visual">🛒</div>
+        <div class="pub-tab-visual">
+          <div class="mockup-frame">
+            <div class="mf-head">
+              <span class="pill pill-ai">ENHANCED</span><span class="pill pill-green">SELECTED</span>
+            </div>
+            <div style="font-family:'Sora',sans-serif;font-size:24px;font-weight:800;margin:10px 0 4px;color:var(--navy);">$349 <span style="font-size:12px;font-weight:500;color:var(--muted);">/ provider / mo</span></div>
+            <div class="mf-sub" style="margin:10px 0 6px;">✓ Everything in Essentials</div>
+            <div class="mf-sub" style="margin-bottom:6px;">✓ Outcomes &amp; analytics pack</div>
+            <div class="mf-sub">✓ Priority support queue</div>
+          </div>
+        </div>
       </div>
 
       <div class="pub-tab-card" id="ft-ai">
@@ -1145,12 +1201,19 @@
           <h3>Help, wherever you are</h3>
           <p class="muted">Ask AI for quick answers on billing or your account, or escalate straight to a live specialist - with the conversation's context carried along.</p>
           <ul>
-            <li>✅ Ask AI assistant embedded across the portal and buy flow</li>
-            <li>✅ One-click handoff to a live Tier-2 agent or sales rep</li>
-            <li>✅ No repeating yourself - context follows the handoff</li>
+            <li><span class="ic">✅</span><span class="tx">Ask AI assistant embedded across the portal and buy flow</span></li>
+            <li><span class="ic">✅</span><span class="tx">One-click handoff to a live Tier-2 agent or sales rep</span></li>
+            <li><span class="ic">✅</span><span class="tx">No repeating yourself - context follows the handoff</span></li>
           </ul>
         </div>
-        <div class="pub-tab-visual">✨</div>
+        <div class="pub-tab-visual">
+          <div class="mockup-frame">
+            <div class="mf-head"><div class="mf-title">✨ Ask AI</div></div>
+            <div class="mf-chat-bubble bot">Hi! I can help with invoices, billing, or your cases.</div>
+            <div class="mf-chat-bubble user">When is my next payment due?</div>
+            <div class="mf-chat-bubble bot">Your next autopay charge is Aug 1 for $1,420.00.</div>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -1181,15 +1244,6 @@
         <button onclick="quoteNav(1)" aria-label="Next">→</button>
       </div>
     </div>
-
-    <div class="pub-body">
-      <div class="stat-row">
-        <div class="card stat-card"><div class="num">&lt;5</div><div class="lbl">Providers? Self‑serve in minutes</div></div>
-        <div class="card stat-card"><div class="num">5+</div><div class="lbl">Providers or RCM? We'll pair you with a specialist</div></div>
-        <div class="card stat-card"><div class="num">2‑min</div><div class="lbl">TIN &amp; email verification</div></div>
-        <div class="card stat-card"><div class="num">Instant</div><div class="lbl">Provisioning on payment</div></div>
-      </div>
-    </div>
   </div>
 
   <!-- Qualify: email + TIN -->
@@ -1210,32 +1264,31 @@
 
         <div class="qlabel">How many providers?</div>
         <div class="qgrid">
-          <button type="button" class="opt-card" id="q-pr-1" onclick="pickQ('pr',1)">1-4 providers<small>Self-serve eligible</small></button>
-          <button type="button" class="opt-card on" id="q-pr-2" onclick="pickQ('pr',2)">5 or more<small>We'll pair you with a specialist</small></button>
+          <button type="button" class="opt-card" id="q-pr-1" onclick="pickQ('pr',1)">1-4 providers<small>Self-service purchase - live in minutes</small></button>
+          <button type="button" class="opt-card on" id="q-pr-2" onclick="pickQ('pr',2)">5 or more<small>Guided enterprise onboarding</small></button>
         </div>
 
         <div class="qlabel">Work email</div>
         <input type="email" id="q-email" placeholder="you@yourclinic.com" value="jordan@sunriserehab.com" oninput="evaluateQualify()">
 
         <div class="branch branch-sales" id="route-sales">
-          <b>Let's do this properly - with a human.</b>
-          <p class="muted" style="margin:6px 0 10px;font-size:13px;">Groups your size get better pricing and a guided rollout. Everything you told us carries over - no re-typing.</p>
+          <b>You've unlocked concierge onboarding 🎉</b>
+          <p class="muted" style="margin:6px 0 10px;font-size:13px;">Teams your size get a dedicated specialist, a guided rollout, and volume pricing - the same white-glove treatment our largest practices get. Everything you've told us carries over, no re-typing.</p>
           <div class="branch-context">You told us: <b id="sales-ctx">1 location · 5+ providers</b> · <span id="sales-email-ctx">jordan@sunriserehab.com</span></div>
-          <button class="btn btn-primary" onclick="qualifyStartChat()">Chat with a specialist now</button>
+          <div style="text-align:right;"><button class="btn btn-primary" style="max-width:none;" onclick="qualifyStartChat()">Chat with a specialist now</button></div>
         </div>
 
         <div class="branch branch-member" id="route-member">
           <b>Good news - you already have a team here. 🎉</b>
           <p class="muted" style="margin:6px 0 10px;font-size:13px;">That email matches an existing WebPT organization. Your account team can add locations, providers, or products - usually same day.</p>
-          <button class="btn" style="background:var(--good);color:#fff;" onclick="qualifyStartChat()">Connect me with my account team</button>
+          <div style="text-align:right;"><button class="btn" style="background:var(--good);color:#fff;max-width:none;" onclick="qualifyStartChat()">Connect me with my account team</button></div>
         </div>
 
-        <div id="q-next" class="hidden" style="margin-top:18px;">
-          <button class="btn btn-primary" onclick="continueToPlans()">Continue →</button>
-          <button class="btn btn-tertiary" onclick="openAF('Happy to help - want to talk through your setup before continuing?')">Prefer to chat? Ask the assistant</button>
+        <div id="q-next" class="hidden" style="margin-top:18px;display:flex;justify-content:flex-end;gap:8px;">
+          <button class="btn btn-ai" onclick="openAF('Happy to help - want to talk through your setup before continuing?')">Ask AI</button>
+          <button class="btn btn-primary" onclick="continueToPlans()">Continue</button>
         </div>
 
-        <p class="muted" style="font-size:11px;margin-top:22px;border-top:1px dashed var(--border);padding-top:14px;">DEMO NOTE - Self-serve boundary: under 5 providers, single clinic. Try "5 or more" to see the assistant offer a human, or an email ending <b>@lakesidehp.com</b> for the existing-member route.</p>
       </div>
     </div>
   </div>
@@ -1275,11 +1328,16 @@
         <span class="muted" style="font-size:12px;">Add-ons render from the same catalog - one price authority, however many SKUs you sell.</span>
       </div>
 
-      <div style="margin-top:16px;">
-        <button class="btn btn-primary" onclick="continueFromPlans()">Continue to checkout →</button>
-        <button class="btn btn-ghost" style="margin-left:8px;" onclick="openAF('Happy to help you compare Essentials and Enhanced! What would you like to know?', ['What\'s different about Enhanced?','Which plan fits a solo provider?','Can I switch plans later?'])">Compare plans? Ask</button>
+      <div style="margin-top:16px;display:flex;justify-content:flex-end;gap:8px;">
+        <button class="btn btn-ai" onclick="openAF('Happy to help you compare Essentials and Enhanced! What would you like to know?', ['What\'s different about Enhanced?','Which plan fits a solo provider?','Can I switch plans later?'])">Ask AI</button>
+        <button class="btn btn-primary" onclick="continueFromPlans()">Continue to checkout</button>
       </div>
-      <p class="muted" style="font-size:11px;margin-top:18px;border-top:1px dashed var(--border);padding-top:14px;">DEMO NOTE - Prices illustrative; bundles, add-ons, and prices render LIVE from Revenue Cloud. Catalog-driven: packaging changes never become portal changes.</p>
+      <div class="trust-row">
+        <div><span>🔒</span> Secure payments</div>
+        <div><span>↩</span> Cancel anytime</div>
+        <div><span>⭐</span> 4.8/5 from 2,000+ practices</div>
+        <div><span>☎</span> Live support, no bots in a loop</div>
+      </div>
     </div>
   </div>
 
@@ -1323,14 +1381,21 @@
             </div>
           </div>
           <div class="grid-2"><div class="field"><label>Expiry</label><input type="text" placeholder="MM / YY"></div><div class="field"><label>CVC</label><input type="text" placeholder="123"></div></div>
-          <label style="display:flex;align-items:center;gap:8px;font-weight:500;color:var(--navy-soft);margin-top:2px;">
+          <label id="co-save-card-wrap" style="display:flex;align-items:center;gap:8px;font-weight:500;color:var(--navy-soft);margin-top:2px;">
             <input type="checkbox" id="co-save-card" checked style="width:auto;">
             Save this card to my account for future payments
           </label>
         </div>
 
-        <button class="btn btn-primary btn-block" style="margin-top:14px;" onclick="finishPurchase()">Confirm &amp; pay</button>
-        <p class="muted" style="font-size:11.5px;margin-top:10px;text-align:center;">No unpaid provisioning - access is granted once payment is confirmed. Card data is tokenized by the payment gateway; Salesforce never stores a full card number (P2‑6).</p>
+        <div style="margin-top:14px;display:flex;justify-content:flex-end;gap:8px;">
+          <button class="btn btn-ghost" onclick="showPublicView('pub-view-landing')">Cancel</button>
+          <button class="btn btn-primary" onclick="finishPurchase()">Confirm &amp; pay</button>
+        </div>
+        <div class="payment-trust-row">
+          <div><span>🔒</span> Secure payment</div>
+          <div><span>🛡️</span> Encrypted checkout</div>
+          <div><span>✓</span> Card details are safely processed</div>
+        </div>
       </div>
     </div>
   </div>
@@ -1353,16 +1418,22 @@
         <div class="kv"><div class="k">1. Check your email</div><div class="v">Within a few minutes</div></div>
         <div class="kv"><div class="k">2. Click the activation link</div><div class="v">Sets your password via SSO</div></div>
         <div class="kv"><div class="k">3. First login provisions access</div><div class="v">Automatic, no ticket needed</div></div>
-        <div class="kv"><div class="k">Need help meanwhile?</div><div class="v">Use the buttons below</div></div>
+        <div class="kv"><div class="k">Need a copy for your records?</div><div class="v"><a href="#" onclick="downloadPurchaseInvoice();return false;" style="color:var(--blue-dark);font-weight:700;">Download invoice</a></div></div>
       </div>
 
       <div class="hidden" id="confirm-actions">
-        <button class="btn btn-primary btn-block" style="margin-top:16px;" onclick="finishAndGoHome()">Go to your Support Hub →</button>
-        <p class="muted" style="font-size:11.5px;text-align:center;margin:8px 0 12px;">Simulates clicking the link in your access &amp; credentialing email - in production this arrives once provisioning finishes, not instantly.</p>
-        <div class="grid-2" style="grid-template-columns:1fr 1fr;gap:10px;">
-          <button class="btn btn-ghost" onclick="startSalesChat()">Talk to an expert</button>
-          <button class="btn btn-ai" onclick="openAF('Congrats on your Gen 3 purchase! I can help with next steps, billing questions, or getting your team set up - what do you need?')">✨ Ask AI</button>
+        <div class="card pad" style="margin-top:16px;">
+          <h3 style="margin-top:0;font-size:15px;">Need help?</h3>
+          <p class="muted" style="font-size:12.5px;margin-top:0;">Get live help without leaving this page.</p>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;">
+            <button class="btn btn-ghost" onclick="startSalesChat()">Talk to an expert</button>
+            <button class="btn btn-ai" onclick="openAF('Congrats on your Gen 3 purchase! I can help with next steps, billing questions, or getting your team set up - what do you need?')">Ask AI</button>
+          </div>
         </div>
+        <div style="margin-top:16px;display:flex;justify-content:flex-end;">
+          <button class="btn btn-primary" onclick="finishAndGoHome()">Go to your Support Hub</button>
+        </div>
+        <p class="muted" style="font-size:11.5px;text-align:right;margin-top:8px;">Simulates clicking the link in your access &amp; credentialing email.</p>
       </div>
     </div>
   </div>
@@ -1383,21 +1454,26 @@
         </div>
         <div class="field"><label>Clinic name</label><input type="text" id="sb-clinic-name" value="Sunrise Rehab Partners"></div>
         <div class="field"><label>Work email</label><input type="email" id="sb-email" value="jordan@sunriserehab.com"></div>
-        <button class="btn btn-primary" onclick="finishSandbox()">Launch sandbox →</button>
+        <div style="text-align:right;"><button class="btn btn-primary" onclick="finishSandbox()">Launch sandbox</button></div>
       </div>
     </div>
   </div>
 
   <div class="view" id="pub-view-sandbox-ready">
     <div class="wizard-shell wizard-shell-sm">
-      <div class="card pad" style="text-align:center;">
-        <div style="font-size:44px;margin-bottom:6px;">📧</div>
+      <div class="card pad">
+        <div class="track-item" id="sbx-step-1"><div class="mk" style="background:#cdd4de;">○</div><div><b>Creating your account</b></div></div>
+        <div class="track-item" id="sbx-step-2"><div class="mk" style="background:#cdd4de;">○</div><div><b>Loading sample clinic data</b></div></div>
+        <div class="track-item" id="sbx-step-3"><div class="mk" style="background:#cdd4de;">○</div><div><b>Setting up your workspace</b></div></div>
+        <div class="track-item" id="sbx-step-4"><div class="mk" style="background:#cdd4de;">○</div><div><b>Sending activation email</b></div></div>
+      </div>
+
+      <div class="card pad hidden" id="sbx-ready-card" style="margin-top:16px;text-align:center;">
+        <div style="font-size:40px;margin-bottom:6px;">📧</div>
         <h2 style="margin:0 0 8px;">Check your email</h2>
-        <p class="muted" style="margin:0;">We've sent an activation link to <b id="sandbox-ready-email">jordan@sunriserehab.com</b>. Click it to open your Gen 3 sandbox - no password needed yet.</p>
-        <div class="kv" style="text-align:left;margin-top:20px;"><div class="k">Sandbox environment</div><div class="v">Sample clinic data</div></div>
-        <div class="kv" style="text-align:left;"><div class="k">Access window</div><div class="v">14 days</div></div>
-        <p class="muted" style="font-size:11px;margin-top:18px;">Didn't get it? Check spam, or <a href="#" onclick="showToast('Activation email resent');return false;" style="color:var(--blue-dark);">resend the email</a>.</p>
-        <button class="btn btn-tertiary" style="margin-top:10px;" onclick="startBuy('sandbox-convert')">Ready to buy for real instead? →</button>
+        <p class="muted" style="margin:0;">We've sent an activation link to <b id="sandbox-ready-email">jordan@sunriserehab.com</b>. Click it, or sign in below to jump straight in.</p>
+        <button class="btn btn-primary btn-block" style="margin-top:18px;max-width:none;" onclick="signInFromSandbox()">Sign in to Support Hub</button>
+        <p class="muted" style="font-size:11px;margin-top:12px;">Didn't get it? <a href="#" onclick="showToast('Activation email resent');return false;" style="color:var(--blue-dark);">Resend the email</a> · <a href="#" onclick="startBuy('sandbox-convert');return false;" style="color:var(--blue-dark);">Ready to buy for real instead?</a></p>
       </div>
     </div>
   </div>
@@ -1569,6 +1645,7 @@ function showPublicView(id){
   document.querySelectorAll('#public-app .view').forEach(v=>v.classList.remove('active'));
   document.getElementById(id).classList.add('active');
   window.scrollTo(0,0);
+  if(document.getElementById('af-panel').classList.contains('open')) refreshAFForPublicPage(id);
 }
 
 function setHeaderMode(mode){
@@ -1726,7 +1803,7 @@ function closeModal(id){
 }
 
 /* ---------------- live sales rep chat ---------------- */
-function startSalesChat(){
+function startSalesChat(customGreeting){
   toggleAF(true);
   AF_CONTEXT = 'sales-live';
   document.getElementById('af-icon').textContent = '🧑';
@@ -1737,17 +1814,90 @@ function startSalesChat(){
   afPush('system', 'Connecting you to a specialist…');
   setTimeout(()=>{
     document.getElementById('af-subtitle').textContent = 'Live · Sam from WebPT Sales';
-    afPush('bot', 'Hi Jordan, this is Sam from WebPT Sales - I can see you\'re exploring Gen 3 for your organization. How can I help?');
+    afPush('bot', customGreeting || 'Hi Jordan, this is Sam from WebPT Sales - I can see you\'re exploring Gen 3 for your organization. How can I help?');
     const q = document.getElementById('af-quick');
     ['Can we get a volume discount?','What does onboarding look like?','I\'d like to schedule a call'].forEach(t=>{
       const b=document.createElement('button');
       b.textContent=t;
-      b.onclick=()=>{afPush('user',t); respondAF(t);};
+      b.onclick=()=>{afQuickClick(t);};
       q.appendChild(b);
     });
   }, 1600);
 }
 
+/* ---------------- payment methods (data-driven so default/remove actually work) ---------------- */
+const PAYMENT_METHODS = [
+  {id:'visa6620', icon:'VISA', iconClass:'', label:'···· ···· ···· 6620', meta:'Expires 03/28', isDefault:true, expired:false},
+  {id:'ach9021', icon:'ACH', iconClass:'ach', label:'Business checking ···· 9021', meta:'Assigned to: RCM add-on orders', isDefault:false, expired:false},
+  {id:'mc7710', icon:'MC', iconClass:'', label:'···· ···· ···· 7710', meta:'Expired 05/26 - update to avoid disruption', isDefault:false, expired:true}
+];
+function renderPaymentMethods(){
+  const wrap = document.getElementById('payment-methods-list');
+  if(!wrap) return;
+  wrap.innerHTML = PAYMENT_METHODS.map(m=>{
+    if(m.expired){
+      return `<div class="method-card" style="border-color:var(--bad);background:var(--bad-bg);">
+        <div class="icon" style="background:var(--bad);">${m.icon}</div>
+        <div class="info"><div class="num">${m.label}</div><div class="exp" style="color:var(--bad);">${m.meta}</div></div>
+        <button class="btn btn-coral btn-sm" onclick="removeMethod('${m.id}')">Remove</button>
+      </div>`;
+    }
+    const metaText = m.isDefault ? m.meta+' · Default' : m.meta;
+    const action = m.isDefault ? '<span class="chip chip-good">Default</span>' : `<button class="btn btn-ghost btn-sm" onclick="setDefaultMethod('${m.id}')">Set default</button>`;
+    return `<div class="method-card">
+      <div class="icon ${m.iconClass}">${m.icon}</div>
+      <div class="info"><div class="num">${m.label}</div><div class="exp">${metaText}</div></div>
+      ${action}
+    </div>`;
+  }).join('');
+}
+function saveNewMethod(){
+  const isACH = document.getElementById('pm-extra-row').classList.contains('hidden');
+  const numInput = document.getElementById('pm-num-input');
+  const rawNum = numInput.value.trim();
+  if(!rawNum){ showToast('Enter a card or account number first'); return; }
+  const last4 = rawNum.replace(/\D/g,'').slice(-4) || '0000';
+  let newMethod;
+  if(isACH){
+    newMethod = {id:'ach'+last4+Date.now(), icon:'ACH', iconClass:'ach', label:'Bank account ···· '+last4, meta:'Added just now', isDefault:false, expired:false};
+  } else {
+    const badgeEl = document.getElementById('pm-card-brand');
+    const badge = (badgeEl && badgeEl.textContent) ? badgeEl.textContent : 'CARD';
+    newMethod = {id:'card'+last4+Date.now(), icon:badge, iconClass:'', label:'···· ···· ···· '+last4, meta:'Added just now', isDefault:false, expired:false};
+  }
+  PAYMENT_METHODS.push(newMethod);
+  renderPaymentMethods();
+  numInput.value = '';
+  showToast('Payment method added');
+}
+function setDefaultMethod(id){
+  PAYMENT_METHODS.forEach(m=>m.isDefault = (m.id===id));
+  renderPaymentMethods();
+  const m = PAYMENT_METHODS.find(x=>x.id===id);
+  showToast(m.label+' set as default');
+}
+function removeMethod(id){
+  const idx = PAYMENT_METHODS.findIndex(x=>x.id===id);
+  if(idx>-1){
+    const removed = PAYMENT_METHODS[idx];
+    PAYMENT_METHODS.splice(idx,1);
+    renderPaymentMethods();
+    showToast('Removed '+removed.label);
+  }
+}
+
+function downloadFile(filename, content){
+  const blob = new Blob([content], {type:'text/plain'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = filename;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  setTimeout(()=>URL.revokeObjectURL(url), 1000);
+  showToast('Downloaded '+filename);
+}
 function showToast(msg){
   const t = document.getElementById('toast');
   t.textContent = '✅ '+msg;
@@ -1944,7 +2094,7 @@ function renderAttachments(c){
     <div class="attachment-item">
       <div class="aicon">${a.icon}</div>
       <div><div class="aname">${a.name}</div><div class="ameta">${a.size} · ${a.uploadedBy} · ${a.when}</div></div>
-      <button class="adl" onclick="showToast('Downloaded ${a.name}')">Download</button>
+      <button class="adl" onclick="downloadFile('${a.name}', 'Demo file from Gen 3 Support Hub\\n\\nAttachment: ${a.name}\\nUploaded by: ${a.uploadedBy}\\nDate: ${a.when}\\nSize: ${a.size}\\n\\nThis is placeholder content generated for prototype purposes.')">Download</button>
     </div>`).join('');
 }
 function attachFile(input){
@@ -1980,8 +2130,8 @@ function openCase(id){
   document.getElementById('cd-comment-btn').textContent = isClosed ? 'Reopen & post comment' : 'Post comment';
 
   const escBtn = document.getElementById('cd-escalate-btn');
-  if(c.priority === 'High'){ escBtn.disabled = true; escBtn.textContent = 'Already High priority'; }
-  else { escBtn.disabled = false; escBtn.textContent = 'Escalate to High Priority'; }
+  escBtn.classList.toggle('hidden', c.priority === 'High');
+  escBtn.textContent = 'Escalate to High Priority';
 
   const closeBtn = document.getElementById('cd-close-btn');
   closeBtn.textContent = isClosed ? 'Case closed' : 'Close case';
@@ -2053,9 +2203,10 @@ const INVOICES = {
   'INV-10312': {id:'INV-10312', date:'May 1, 2026', amount:2860.00, status:'paid', paidDate:'May 3, 2026', txnId:'TXN-8H2K9QWM', method:'Visa ····6620'},
   'INV-10245': {id:'INV-10245', date:'Apr 1, 2026', amount:2860.00, status:'paid', paidDate:'Apr 2, 2026', txnId:'TXN-3F7R1LPX', method:'Visa ····6620'}
 };
-const INVOICE_STATUS_CHIP = {due:'chip-bad', overdue:'chip-bad', paid:'chip-good'};
+const INVOICE_STATUS_CHIP = {due:'chip-bad', overdue:'chip-bad', paid:'chip-good', processing:'chip-warn'};
 function invoiceStatusLabel(inv){
   if(inv.status==='paid') return 'Paid';
+  if(inv.status==='processing') return 'Processing';
   if(inv.status==='overdue') return 'Overdue';
   return 'Due '+inv.dueDate;
 }
@@ -2089,11 +2240,24 @@ function renderInvoiceRightPanel(inv){
         <div class="kv"><div class="k">Paid on</div><div class="v">${inv.paidDate}</div></div>
         <div class="kv"><div class="k">Transaction ID</div><div class="v">${inv.txnId}</div></div>
         <div class="kv"><div class="k">Payment method</div><div class="v">${inv.method}</div></div>
-        <button class="btn btn-ghost btn-block" style="margin-top:12px;" onclick="showToast('Receipt downloaded')">Download receipt</button>
+        <button class="btn btn-ghost btn-block" style="margin-top:12px;" onclick="downloadFile('Receipt-${inv.id}.txt', 'WebPT Gen 3 - Payment Receipt\\n\\nInvoice: ${inv.id}\\nAmount: ${fmtMoney(inv.amount)}\\nPaid on: ${inv.paidDate}\\nTransaction ID: ${inv.txnId}\\nPayment method: ${inv.method}\\n\\nThank you for your payment.')">Download receipt</button>
       </div>
       <div class="card pad">
         <h3 style="margin-top:0;font-size:15px;">Questions about this invoice?</h3>
         <p class="muted" style="font-size:12.5px;margin-top:0;">Ask AI can explain charges, compare to prior months, or pull a copy for your records.</p>
+        <button class="btn btn-ai btn-block" onclick="openInvoiceAI()">✨ Ask AI</button>
+      </div>`;
+  } else if(inv.status === 'processing'){
+    el.innerHTML = `
+      <div class="card pad" style="margin-bottom:14px;">
+        <h3 style="margin-top:0;font-size:15px;">Payment processing</h3>
+        <div class="banner banner-info" style="margin-bottom:14px;"><div>🏦</div><div>Your bank transfer is being verified via Stripe. ACH payments typically clear in 1-4 business days - we'll email you once it's confirmed.</div></div>
+        <div class="kv"><div class="k">Status</div><div class="v"><span class="chip chip-warn">Processing</span></div></div>
+        <div class="kv"><div class="k">Submitted</div><div class="v">${inv.paidDate}</div></div>
+        <div class="kv"><div class="k">Payment method</div><div class="v">${inv.method}</div></div>
+      </div>
+      <div class="card pad">
+        <h3 style="margin-top:0;font-size:15px;">Questions about this invoice?</h3>
         <button class="btn btn-ai btn-block" onclick="openInvoiceAI()">✨ Ask AI</button>
       </div>`;
   } else {
@@ -2103,20 +2267,28 @@ function renderInvoiceRightPanel(inv){
         <h3 style="margin-top:0;font-size:15px;">Pay this invoice</h3>
         ${isOverdue ? '<div class="banner banner-warn" style="margin-bottom:14px;"><div>⚠️</div><div>This invoice is overdue. Pay now to avoid service disruption.</div></div>' : ''}
         <div class="field">
-          <label>Payment method</label>
+          <label>Charge which saved method?</label>
           <div class="opt-group" id="inv-pay-method-group">
-            <button type="button" class="opt-btn selected" onclick="selectOpt(this)">Visa ····6620 (default)</button>
-            <button type="button" class="opt-btn" onclick="selectOpt(this)">Business checking ····9021 (ACH)</button>
+            <button type="button" class="opt-btn selected" onclick="selectInvoiceMethod(this,false)">Visa ····6620 (default)</button>
+            <button type="button" class="opt-btn" onclick="selectInvoiceMethod(this,true)">Business checking ····9021 (ACH)</button>
           </div>
         </div>
+        <p class="muted" style="font-size:11.5px;" id="inv-pay-timing-note">Charged instantly via Stripe using your saved card - no need to re-enter details.</p>
         <button class="btn btn-primary btn-block" onclick="payInvoice()">Pay ${fmtMoney(inv.amount)} now</button>
-        <p class="muted" style="font-size:11.5px;margin-top:10px;">Card data is tokenized and stored with the payment gateway - no card numbers are stored in Salesforce (P2‑6).</p>
+        <p class="muted" style="font-size:11px;margin-top:10px;">Paying with a different card? <a href="#" onclick="activateNav('billing-methods');return false;" style="color:var(--blue-dark);">Add it on Payment Methods</a> first - Stripe verifies new cards once before they can be charged.</p>
       </div>
       <div class="card pad">
         <h3 style="margin-top:0;font-size:15px;">Questions about this invoice?</h3>
         <button class="btn btn-ai btn-block" onclick="openInvoiceAI()">✨ Ask AI</button>
       </div>`;
   }
+}
+function selectInvoiceMethod(el, isACH){
+  selectOpt(el);
+  const note = document.getElementById('inv-pay-timing-note');
+  note.textContent = isACH
+    ? 'ACH transfers typically take 1-4 business days to clear via Stripe - your invoice will show as "Processing" until then.'
+    : 'Charged instantly via Stripe using your saved card - no need to re-enter details.';
 }
 function openInvoiceAI(){
   const inv = INVOICES[CURRENT_INVOICE];
@@ -2128,13 +2300,22 @@ function openInvoiceAI(){
 function payInvoice(){
   const inv = INVOICES[CURRENT_INVOICE];
   const methodBtn = document.querySelector('#inv-pay-method-group .opt-btn.selected');
-  inv.status = 'paid';
-  inv.paidDate = 'Today';
-  inv.txnId = genTxnId();
-  inv.method = methodBtn ? methodBtn.textContent.replace(' (default)','').replace(' (ACH)','') : 'Visa ····6620';
-  renderInvoiceRightPanel(inv);
-  renderInvoicesList();
-  showToast('Payment submitted - receipt emailed');
+  const methodText = methodBtn ? methodBtn.textContent.replace(' (default)','').replace(' (ACH)','') : 'Visa ····6620';
+  const isACH = methodBtn ? methodBtn.textContent.includes('ACH') : false;
+  showLoaderSequence([isACH ? 'Submitting bank transfer via Stripe…' : 'Charging your saved card via Stripe…'], ()=>{
+    inv.paidDate = 'Today';
+    inv.method = methodText;
+    if(isACH){
+      inv.status = 'processing';
+      showToast('Bank transfer submitted - clears in 1-4 business days');
+    } else {
+      inv.status = 'paid';
+      inv.txnId = genTxnId();
+      showToast('Payment successful - receipt emailed');
+    }
+    renderInvoiceRightPanel(inv);
+    renderInvoicesList();
+  }, 900);
 }
 
 /* build 12-month schedule */
@@ -2175,10 +2356,28 @@ function startSandbox(){ showPublicView('pub-view-sandbox'); }
 function finishSandbox(){
   const emailEl = document.getElementById('sb-email');
   const email = emailEl ? emailEl.value : 'jordan@sunriserehab.com';
-  showLoaderSequence(['Creating your sandbox account…','Loading sample clinic data…','Almost ready…'], ()=>{
+  showPublicView('pub-view-sandbox-ready');
+  runSandboxProvisioning(email);
+}
+function runSandboxProvisioning(email){
+  const steps = ['sbx-step-1','sbx-step-2','sbx-step-3','sbx-step-4'].map(id=>document.getElementById(id).querySelector('.mk'));
+  steps.forEach(s=>{ s.style.background='#cdd4de'; s.textContent='○'; });
+  document.getElementById('sbx-ready-card').classList.add('hidden');
+  setTimeout(()=>{ steps[0].style.background='var(--good)'; steps[0].textContent='✓'; }, 500);
+  setTimeout(()=>{ steps[1].style.background='var(--good)'; steps[1].textContent='✓'; }, 1300);
+  setTimeout(()=>{ steps[2].style.background='var(--good)'; steps[2].textContent='✓'; }, 2100);
+  setTimeout(()=>{
+    steps[3].style.background='var(--good)'; steps[3].textContent='✓';
     document.getElementById('sandbox-ready-email').textContent = email;
-    showPublicView('pub-view-sandbox-ready');
-  }, 800);
+    document.getElementById('sbx-ready-card').classList.remove('hidden');
+  }, 2900);
+}
+function signInFromSandbox(){
+  document.getElementById('public-app').classList.remove('active');
+  showLoaderSequence(['Redirecting to WebPT Identity Provider…','Signing you in via SSO…','Loading your sandbox…'], ()=>{
+    doLogin();
+    showToast('Welcome to your Gen 3 sandbox');
+  }, 750);
 }
 let Q_LOC = 1;
 let Q_PR = 2;
@@ -2206,7 +2405,16 @@ function evaluateQualify(){
     document.getElementById('sales-email-ctx').textContent = email || 'your email';
   }
 }
-function qualifyStartChat(){ startSalesChat(); }
+function qualifyStartChat(){
+  const email = document.getElementById('q-email').value.trim() || 'your email';
+  const locText = Q_LOC === 2 ? '2+ locations' : '1 location';
+  const prText = Q_PR === 2 ? '5+ providers' : '1-4 providers';
+  const isMemberRoute = document.getElementById('route-member').classList.contains('show');
+  const greeting = isMemberRoute
+    ? 'Hi Jordan, this is Sam from WebPT - I can see '+email+' is already tied to one of our accounts. Let\'s get your team what they need - what would you like to add?'
+    : 'Hi Jordan, this is Sam from WebPT Sales - I can see you\'re set up with '+locText+' and '+prText+' ('+email+'). Let\'s find the right fit for your team - what would you like to know?';
+  startSalesChat(greeting);
+}
 function continueToPlans(){ showPublicView('pub-view-plans'); }
 let SELECTED_PLAN = {name:'Enhanced', price:'$349'};
 let BILLING_CYCLE = 'monthly';
@@ -2257,6 +2465,7 @@ function continueFromPlans(){
   const hasStoredCards = (BUY_MODE === 'existing');
   document.getElementById('co-saved-wrap').classList.toggle('hidden', !hasStoredCards);
   document.getElementById('co-new-card-fields').classList.toggle('hidden', hasStoredCards);
+  document.getElementById('co-save-card-wrap').classList.toggle('hidden', !hasStoredCards);
   if(hasStoredCards){
     document.querySelectorAll('#co-method-group .opt-btn').forEach(b=>b.classList.remove('selected'));
     document.querySelector('#co-method-group .opt-btn').classList.add('selected');
@@ -2266,6 +2475,11 @@ function continueFromPlans(){
 function selectCheckoutMethod(el, isNew){
   selectOpt(el);
   document.getElementById('co-new-card-fields').classList.toggle('hidden', !isNew);
+}
+function downloadPurchaseInvoice(){
+  const txn = document.getElementById('confirm-txn').textContent;
+  const amt = document.getElementById('co-total') ? document.getElementById('co-total').textContent : '';
+  downloadFile('Invoice-'+txn+'.txt', 'WebPT Gen 3 - Purchase Invoice\n\nTransaction: '+txn+'\nPlan: '+SELECTED_PLAN.name+'\nAmount: '+amt+'\nBilling cycle: '+BILLING_CYCLE+'\n\nThank you for choosing WebPT Gen 3.');
 }
 function finishPurchase(){
   showLoaderSequence(['Contacting payment gateway…','Processing payment…'], ()=>{
@@ -2320,20 +2534,23 @@ function finishAndGoHome(){
 /* ---------------- Agentforce / live-agent widget ---------------- */
 let AF_CONTEXT = 'public';
 let AF_LAST_KEY = null;
+let AF_CHAT_STARTED = false;
 function afEnsureContext(key, greeting){
   if(AF_LAST_KEY !== key){
     document.getElementById('af-body').innerHTML = '';
     afPush('bot', greeting);
     AF_LAST_KEY = key;
+    AF_CHAT_STARTED = false;
   }
 }
 const AF_SCRIPTS = {
-  public: {subtitle:'Buying assistant · Public', greet:'Hi! I\'m the Gen 3 buying assistant. I can answer plan questions or help you get qualified - I only use public marketing content, never account data.', quick:['What plans are available?','Do I qualify for self-serve?','Talk to a human']},
+  public: {subtitle:'Buying assistant · Public', greet:'Hi! I\'m the Gen 3 buying assistant. I can answer plan questions or help you get started - I only use public marketing content, never account data.', quick:['What plans are available?','Do I qualify for self-serve?','Talk to a human']},
   member: {subtitle:'Member assistant · Support Hub', greet:'Hi Jordan 👋 I can help with invoices, billing, or your cases - grounded only in what you\'re authorized to see.', quick:['Why is my invoice higher this month?','Show my open cases','Talk to a live agent']},
   live: {subtitle:'Live agent · Tier‑2 Support', greet:'', quick:['Send screenshot','This is resolved, thanks']}
 };
 function afSetContext(ctx){
   AF_CONTEXT = ctx;
+  AF_CHAT_STARTED = false;
   const cfg = AF_SCRIPTS[ctx];
   document.getElementById('af-icon').textContent = '✨';
   document.getElementById('af-title').textContent = 'Ask AI';
@@ -2345,20 +2562,27 @@ function afSetContext(ctx){
   cfg.quick.forEach(t=>{
     const b=document.createElement('button');
     b.textContent=t;
-    b.onclick=()=>{afPush('user',t); respondAF(t);};
+    b.onclick=()=>{afQuickClick(t);};
     q.appendChild(b);
   });
 }
 function openAF(msg, quickOverride){
   toggleAF(true);
-  afSetContext('member');
+  const isMember = document.getElementById('app').classList.contains('active');
+  AF_CONTEXT = isMember ? 'member' : 'public';
+  document.getElementById('af-icon').textContent = '✨';
+  document.getElementById('af-title').textContent = 'Ask AI';
+  document.getElementById('af-subtitle').textContent = isMember ? 'Member assistant · Support Hub' : 'Buying assistant · Public';
+  document.getElementById('af-body').innerHTML = '';
+  AF_LAST_KEY = 'custom';
+  AF_CHAT_STARTED = false;
+  const q = document.getElementById('af-quick');
+  q.innerHTML='';
   if(quickOverride){
-    const q = document.getElementById('af-quick');
-    q.innerHTML='';
     quickOverride.forEach(t=>{
       const b=document.createElement('button');
       b.textContent=t;
-      b.onclick=()=>{afPush('user',t); respondAF(t);};
+      b.onclick=()=>{afQuickClick(t);};
       q.appendChild(b);
     });
   }
@@ -2409,6 +2633,9 @@ function toggleAF(forceOpen){
     if(isMember){
       const activeView = document.querySelector('#app .view.active');
       if(activeView) refreshAFForPage(activeView.id.replace('view-',''));
+    } else {
+      const activePublicView = document.querySelector('#public-app .view.active');
+      if(activePublicView) refreshAFForPublicPage(activePublicView.id);
     }
   }
 }
@@ -2426,13 +2653,28 @@ const PAGE_QUESTIONS = {
   'knowledge': ['Where do I find EMR documentation?','How do I contact support?'],
   'profile': ['How do I update notification preferences?','Who manages my sign-in?']
 };
+const PUBLIC_PAGE_QUESTIONS = {
+  'pub-view-landing': ['What plans are available?','Do I qualify for self-serve?','How does the sandbox work?'],
+  'pub-view-qualify': ['Am I self-serve eligible?','What counts as a provider?','Can I talk to a human instead?'],
+  'pub-view-plans': ['What\'s different about Enhanced?','Which plan fits a solo provider?','Can I switch plans later?'],
+  'pub-view-checkout': ['Is my card information secure?','Can I pay yearly instead of monthly?','What if my payment fails?'],
+  'pub-view-confirm': ['What happens after I pay?','How long does provisioning take?','Who do I contact if something goes wrong?'],
+  'pub-view-sandbox': ['What\'s included in the sandbox?','How long do I have access?'],
+  'pub-view-sandbox-ready': ['What\'s included in the sandbox?','How long do I have access?']
+};
+function refreshAFForPublicPage(viewId){
+  if(AF_CONTEXT !== 'public') return;
+  const list = PUBLIC_PAGE_QUESTIONS[viewId];
+  if(list) setAFQuick(list);
+}
 function setAFQuick(list){
+  if(AF_CHAT_STARTED) return;
   const q = document.getElementById('af-quick');
   q.innerHTML = '';
   list.forEach(t=>{
     const b=document.createElement('button');
     b.textContent=t;
-    b.onclick=()=>{afPush('user',t); respondAF(t);};
+    b.onclick=()=>{afQuickClick(t);};
     q.appendChild(b);
   });
 }
@@ -2470,17 +2712,43 @@ function afPush(who, text){
   body.appendChild(div);
   body.scrollTop = body.scrollHeight;
 }
+function afQuickClick(t){
+  AF_CHAT_STARTED = true;
+  document.getElementById('af-quick').innerHTML = '';
+  afPush('user', t);
+  respondAF(t);
+}
 function sendAF(){
   const input = document.getElementById('af-input-text');
   const val = input.value.trim();
   if(!val) return;
+  AF_CHAT_STARTED = true;
+  document.getElementById('af-quick').innerHTML = '';
   afPush('user', val);
   input.value='';
   respondAF(val);
 }
 function respondAF(text){
   setTimeout(()=>{
-    if(/changed since i last logged in/i.test(text)){
+    if(/is my card information secure/i.test(text)){
+      afPush('bot','Yes - your card details are tokenized directly by the payment gateway (Stripe). Salesforce and Experience Cloud never see or store the full card number.');
+    } else if(/pay yearly instead of monthly/i.test(text)){
+      afPush('bot','Yes - use the Monthly/Yearly toggle at the top of the payment page. Yearly billing saves 15% compared to paying monthly.');
+    } else if(/what if my payment fails/i.test(text)){
+      afPush('bot','If a charge fails, you\'ll see an error right on this page so you can try a different card - nothing is provisioned until payment succeeds, so you won\'t be charged for a failed attempt.');
+    } else if(/what happens after i pay/i.test(text)){
+      afPush('bot','Your order is set up, then we provision your Gen 3 environment - usually under 10 minutes - and email you an activation link to sign in.');
+    } else if(/how long does provisioning take/i.test(text)){
+      afPush('bot','Typically under 10 minutes. You\'ll see live progress on this page, and get an email the moment it\'s ready.');
+    } else if(/contact if something goes wrong/i.test(text)){
+      afPush('bot','Use "Talk to an expert" or "Ask AI" right here on this page - both have your order context, so you won\'t need to re-explain anything.');
+    } else if(/am i self-serve eligible/i.test(text)){
+      afPush('bot','Self-serve works for single-location practices with under 5 providers. Answer the two questions above and I\'ll route you the fastest way either way.');
+    } else if(/what counts as a provider/i.test(text)){
+      afPush('bot','Anyone who delivers billable care under your NPI - physical/occupational/speech therapists, for example. Front-desk and admin staff don\'t count toward the total.');
+    } else if(/talk to a human instead/i.test(text)){
+      afPush('bot','Sure - use "Chat with a specialist now" if you\'re routed to sales, or I can flag a live agent for you right now. Which would you prefer?');
+    } else if(/changed since i last logged in/i.test(text)){
       afPush('bot','Since your last login: case #00234 got a new update from Priya, your June invoice posted, and Denver Clinic reached 62% through implementation.');
     } else if(/which case needs my attention/i.test(text)){
       afPush('bot','Case #00229 is marked "Waiting on You" - Marcus needs a confirmation from you on the Boulder login issue. That one\'s worth a look first.');
@@ -2723,6 +2991,7 @@ renderPlansList();
 renderBillingSubnav();
 renderProductSubnav();
 renderUsage();
+renderPaymentMethods();
 evaluateQualify();
 goPublic();
 </script>
