@@ -558,6 +558,10 @@
   .af-input{display:flex;border-top:1px solid var(--border);padding:10px;gap:8px;}
   .af-input input{border-radius:10px;}
   .af-input button{background:var(--grad);color:#fff;border:none;width:38px;border-radius:10px;cursor:pointer;flex-shrink:0;}
+  .af-input button.mic-btn{background:#fff;border:1.5px solid var(--border);color:var(--navy-soft);display:flex;align-items:center;justify-content:center;}
+  .af-input button.mic-btn:hover{border-color:var(--blue);color:var(--blue);}
+  .af-input button.mic-btn.listening{background:var(--coral);color:#fff;border-color:var(--coral);animation:mic-pulse 1.2s infinite;}
+  @keyframes mic-pulse{0%{box-shadow:0 0 0 0 rgba(252,92,111,.45);}70%{box-shadow:0 0 0 8px rgba(252,92,111,0);}100%{box-shadow:0 0 0 0 rgba(252,92,111,0);}}
 
   .track-item{display:flex;gap:14px;padding:14px 0;border-bottom:1px solid var(--border);}
   .track-item:last-child{border-bottom:none;}
@@ -1704,7 +1708,8 @@
   <div class="af-body" id="af-body"></div>
   <div class="af-quick" id="af-quick"></div>
   <div class="af-input">
-    <input type="text" id="af-input-text" placeholder="Ask a question...">
+    <input type="text" id="af-input-text" placeholder="Ask a question..." onkeydown="if(event.key==='Enter')sendAF()">
+    <button type="button" class="mic-btn" id="af-mic-btn" onclick="toggleVoiceInput()" title="Speak your question"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg></button>
     <button onclick="sendAF()">➤</button>
   </div>
 </div>
@@ -2956,6 +2961,61 @@ function afQuickClick(t){
   document.getElementById('af-quick').innerHTML = '';
   afPush('user', t);
   respondAF(t);
+}
+let AF_RECOGNITION = null;
+let AF_LISTENING = false;
+function toggleVoiceInput(){
+  const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+  const btn = document.getElementById('af-mic-btn');
+  const input = document.getElementById('af-input-text');
+
+  if(!SpeechRecognition){
+    showToast('Voice input isn\'t supported in this browser - try Chrome or Edge.');
+    return;
+  }
+
+  if(AF_LISTENING){
+    AF_RECOGNITION && AF_RECOGNITION.stop();
+    return;
+  }
+
+  const baseValue = input.value.trim() ? input.value.trim() + ' ' : '';
+  AF_RECOGNITION = new SpeechRecognition();
+  AF_RECOGNITION.lang = 'en-US';
+  AF_RECOGNITION.interimResults = true;
+  AF_RECOGNITION.continuous = false;
+
+  AF_RECOGNITION.onstart = () => {
+    AF_LISTENING = true;
+    btn.classList.add('listening');
+    input.placeholder = 'Listening…';
+  };
+  AF_RECOGNITION.onresult = (e) => {
+    let transcript = '';
+    for(let i = 0; i < e.results.length; i++){
+      transcript += e.results[i][0].transcript;
+    }
+    input.value = baseValue + transcript;
+  };
+  AF_RECOGNITION.onerror = (e) => {
+    if(e.error === 'not-allowed' || e.error === 'permission-denied'){
+      showToast('Microphone access was blocked - allow it in your browser to use voice input.');
+    } else if(e.error !== 'no-speech' && e.error !== 'aborted'){
+      showToast('Voice input hit a snag - try again.');
+    }
+  };
+  AF_RECOGNITION.onend = () => {
+    AF_LISTENING = false;
+    btn.classList.remove('listening');
+    input.placeholder = 'Ask a question...';
+    input.focus();
+  };
+
+  try{
+    AF_RECOGNITION.start();
+  } catch(err){
+    showToast('Could not start voice input.');
+  }
 }
 function sendAF(){
   const input = document.getElementById('af-input-text');
