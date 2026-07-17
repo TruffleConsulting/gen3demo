@@ -3051,8 +3051,48 @@ function respondAF(text){
       afPush('bot','With 3 providers and in-house billing, Standard covers what you need - Core EMR + RCM tools, case visibility, and the billing portal, at $690/mo. Enhanced adds analytics and priority support if you want more headroom.');
     } else if(/8 providers/i.test(text)){
       afPush('bot','At 8 providers across 2 locations, you\'re just outside self-serve eligibility (under 5, single location) - you\'d be routed to a specialist, and Enhanced + RCM is usually the right starting point for multi-clinic billing complexity.');
-    } else if(/rcm actually include/i.test(text)){
+    } else if(/rcm add-on charge cover|rcm actually include/i.test(text)){
       afPush('bot','RCM add-on covers claims submission, denial management, and a dedicated CSM watching your collections - it\'s billing handled for you rather than by your own staff.');
+    } else if(/summarize my open cases/i.test(text)){
+      afPush('bot','You have 2 open cases: #00234 (In Progress, eligibility check) and #00229 (Waiting on You, Boulder login issue) - the second one needs a reply from you.');
+    } else if(/invoices? due soon/i.test(text)){
+      afPush('bot','INV‑10456 for $1,420.00 is due Jul 15 - autopay will attempt it automatically that day using your Visa ····6620.');
+    } else if(/higher than last month/i.test(text)){
+      afPush('bot','This invoice includes the RCM add‑on that started this billing cycle - that\'s the $230 difference versus last month.');
+    } else if(/next payment due/i.test(text)){
+      afPush('bot','Your next payment is INV‑10456 for $1,420.00, due Jul 15 - autopay is active, so no action is needed unless you want to pay early.');
+    } else if(/copy of an invoice/i.test(text)){
+      afPush('bot','Open any invoice from the Invoices list and use the download/print option at the top - it\'s formatted for sharing with an accountant or auditor.');
+    } else if(/how do i contact support/i.test(text)){
+      afPush('bot','Right here - open or comment on a case for anything account-specific, or use Ask AI. For urgent issues, "Escalate" on a case notifies Tier‑2 immediately.');
+    } else if(/what plans are available/i.test(text)){
+      afPush('bot','Essentials ($249/provider/mo) covers EMR, scheduling, billing, and the Support Hub. Enhanced ($349/provider/mo) adds outcomes & analytics plus priority support. Both can add the RCM add‑on.');
+    } else if(/how does the sandbox work/i.test(text)){
+      afPush('bot','The free sandbox is a fully-featured Gen 3 environment pre-loaded with sample patients and cases, so you can click around before buying - no credit card, no time pressure.');
+    } else if(/different about enhanced/i.test(text)){
+      afPush('bot','Enhanced includes everything in Essentials, plus the outcomes & analytics pack and a priority Tier‑2 support queue - it\'s built for growing practices that want more visibility and faster support.');
+    } else if(/solo provider/i.test(text)){
+      afPush('bot','Essentials is the right fit for a solo provider - it covers the EMR, scheduling, billing, and Support Hub access at $249/mo without paying for the analytics pack Enhanced adds.');
+    } else if(/switch plans later/i.test(text)){
+      afPush('bot','Yes - you can upgrade or downgrade anytime from Subscriptions or Buy / Add Products. Changes are prorated on your next invoice, no need to re-purchase.');
+    } else if(/included in the sandbox/i.test(text)){
+      afPush('bot','The sandbox includes the full Gen 3 EMR, scheduling, billing, and Support Hub - all pre-loaded with realistic sample data so you can test real workflows risk-free.');
+    } else if(/how long do i have access/i.test(text)){
+      afPush('bot','Your free sandbox stays active for 14 days. You\'ll get a reminder email before it expires, and you can convert to a paid plan anytime without losing your test data.');
+    } else if(/summarize how this was resolved/i.test(text)){
+      afPush('bot','This case was resolved after Tier‑2 corrected the eligibility routing rule for your organization - no changes were needed on your end.');
+    } else if(/reopen this/i.test(text)){
+      afPush('bot','Just add a new comment on the closed case - posting a comment automatically reopens it and routes it back to the support queue.');
+    } else if(/higher than usual/i.test(text)){
+      afPush('bot','This invoice includes the RCM add‑on that started this billing cycle - that\'s the recurring $230 difference you\'re seeing.');
+    } else if(/copy for my accountant/i.test(text)){
+      afPush('bot','Use the download/print option at the top of this invoice - it\'s a formatted PDF that\'s ready to hand off to your accountant.');
+    } else if(/^when is this due/i.test(text)){
+      afPush('bot','This invoice is due Jul 15 - autopay is active on your account, so it\'ll be charged automatically unless you pay it manually first.');
+    } else if(/split this into a payment plan/i.test(text)){
+      afPush('bot','Yes - from Subscriptions, use "Change payment" on the relevant plan card, or ask your account team to set up an installment plan for this balance.');
+    } else if(/pay late/i.test(text)){
+      afPush('bot','A late payment triggers a retry and a reminder notification. If it stays unpaid, service isn\'t interrupted immediately, but repeated misses can pause add-ons like RCM.');
     } else if(/plan/i.test(text)){
       afPush('bot','We offer Standard, Enhanced, and Enhanced + RCM, priced by provider count and priced from Revenue Cloud in real time. Want me to open the plan selector?');
     } else if(/qualify/i.test(text)){
